@@ -36,6 +36,7 @@ static ee_u16 list_known_crc[]   =      {(ee_u16)0xd4b0,(ee_u16)0x3340,(ee_u16)0
 static ee_u16 matrix_known_crc[] =      {(ee_u16)0xbe52,(ee_u16)0x1199,(ee_u16)0x5608,(ee_u16)0x1fd7,(ee_u16)0x0747};
 static ee_u16 state_known_crc[]  =      {(ee_u16)0x5e47,(ee_u16)0x39bf,(ee_u16)0xe5a4,(ee_u16)0x8e3a,(ee_u16)0x8d84};
 void *iterate(void *pres) {
+	ee_printf("Start iterate!\n");
 	ee_u32 i;
 	ee_u16 crc;
 	core_results *res=(core_results *)pres;
@@ -44,14 +45,20 @@ void *iterate(void *pres) {
 	res->crclist=0;
 	res->crcmatrix=0;
 	res->crcstate=0;
-
+	ee_printf("Iterations : %d\n",iterations);
 	for (i=0; i<iterations; i++) {
+		ee_printf("Iterations num: %d\n",i);
 		crc=core_bench_list(res,1);
 		res->crc=crcu16(crc,res->crc);
 		crc=core_bench_list(res,-1);
 		res->crc=crcu16(crc,res->crc);
 		if (i==0) res->crclist=res->crc;
 	}
+	ee_printf("Iterations num: %d\n",i);
+	ee_printf("res.crc: %x\n",res->crc);
+	ee_printf("res.crclist: %x\n",res->crclist);
+	ee_printf("res.crcmatrix: %x\n",res->crcmatrix);
+	ee_printf("res.crcstate: %x\n",res->crcstate);
 	return NULL;
 }
 
@@ -101,7 +108,7 @@ MAIN_RETURN_TYPE main(int argc, char *argv[]) {
 	ee_u8 stack_memblock[TOTAL_DATA_SIZE*MULTITHREAD];
 #endif
 
-  ioe_init();
+  // ioe_init();
 
   ee_printf("Running CoreMark for %d iterations\n", ITERATIONS);
 
