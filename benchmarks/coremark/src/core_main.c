@@ -54,11 +54,11 @@ void *iterate(void *pres) {
 		res->crc=crcu16(crc,res->crc);
 		if (i==0) res->crclist=res->crc;
 	}
-	ee_printf("Iterations num: %d\n",i);
-	ee_printf("res.crc: %x\n",res->crc);
-	ee_printf("res.crclist: %x\n",res->crclist);
-	ee_printf("res.crcmatrix: %x\n",res->crcmatrix);
-	ee_printf("res.crcstate: %x\n",res->crcstate);
+	// ee_printf("Iterations num: %d\n",i);
+	// ee_printf("res.crc: %x\n",res->crc);
+	// ee_printf("res.crclist: %x\n",res->crclist);
+	// ee_printf("res.crcmatrix: %x\n",res->crcmatrix);
+	// ee_printf("res.crcstate: %x\n",res->crcstate);
 	return NULL;
 }
 
@@ -108,7 +108,7 @@ MAIN_RETURN_TYPE main(int argc, char *argv[]) {
 	ee_u8 stack_memblock[TOTAL_DATA_SIZE*MULTITHREAD];
 #endif
 
-  // ioe_init();
+  // ioe_init() ;
 
   ee_printf("Running CoreMark for %d iterations\n", ITERATIONS);
 

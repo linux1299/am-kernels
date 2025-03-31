@@ -354,7 +354,8 @@
 #include <klib.h>
 #include <klib-macros.h>
 
-static uint32_t uptime_ms() { return io_read(AM_TIMER_UPTIME).us / 1000; }
+// static uint32_t uptime_ms() { return io_read(AM_TIMER_UPTIME).us / 1000; }
+static uint32_t uptime_ms() { return (uint32_t) 1000; }
 #define Start_Timer() Begin_Time = uptime_ms()
 #define Stop_Timer()  End_Time   = uptime_ms()
 
@@ -760,7 +761,7 @@ int main ()
   REG   int             Run_Index;
   REG   int             Number_Of_Runs;
 
-  ioe_init();
+  // ioe_init();
 
  Number_Of_Runs = NUMBER_OF_RUNS;
 

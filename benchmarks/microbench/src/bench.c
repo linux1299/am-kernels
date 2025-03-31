@@ -8,7 +8,8 @@ Setting *setting;
 
 static char *hbrk;
 
-static uint64_t uptime() { return io_read(AM_TIMER_UPTIME).us; }
+// static uint64_t uptime() { return io_read(AM_TIMER_UPTIME).us; }
+static uint64_t uptime() { return (uint64_t) 1000; }
 
 static char *format_time(uint64_t us) {
   static char buf[32];
@@ -91,7 +92,7 @@ int main(const char *args) {
     halt(1);
   }
 
-  ioe_init();
+  // ioe_init();
 
   printf("======= Running MicroBench [input *%s*] =======\n", setting_name);
 

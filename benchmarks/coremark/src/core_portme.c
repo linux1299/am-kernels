@@ -36,7 +36,8 @@
 #define SAMPLE_TIME_IMPLEMENTATION 1
 #define EE_TICKS_PER_SEC (NSECS_PER_SEC / TIMER_RES_DIVIDER)
 
-static uint32_t uptime_ms() { return io_read(AM_TIMER_UPTIME).us / 1000; }
+// static uint32_t uptime_ms() { return io_read(AM_TIMER_UPTIME).us / 1000; }
+static uint32_t uptime_ms() { return (uint32_t) 1000; }
 
 /** Define Host specific (POSIX), or target specific global time variables. */
 unsigned long start_time_val, stop_time_val;
